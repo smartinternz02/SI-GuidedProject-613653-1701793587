@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Traffic Attributes</title>
+    <style>
+        /* CSS for table styling */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* CSS for additional styling */
+        /* Add your own custom styles here */
+    </style>
+</head>
+<body>
+    <h1>Website Traffic Attributes</h1>
+    <table id="trafficTable">
+        <thead>
+            <tr>
+                <th>Administrative</th>
+                <th>Administrative Duration</th>
+                <!-- Add other headers for all attributes -->
+                <!-- Modify headers according to your specific attribute names -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table body content will be populated dynamically using JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // JavaScript code to populate table with data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample data - replace this with your actual data or fetch it from your Flask app
+            var data = [
+                {
+                    'Administrative': 5,
+                    'Administrative_Duration': 154
+                    // Add other attribute-value pairs for each row
+                },
+                {
+                    'Administrative': 2,
+                    'Administrative_Duration': 56
+                    // Add other attribute-value pairs for each row
+                },
+                // Add more rows as needed
+            ];
+
+            var tableBody = document.querySelector('#trafficTable tbody');
+
+            data.forEach(function(rowData) {
+                var row = document.createElement('tr');
+
+                Object.keys(rowData).forEach(function(key) {
+                    var cell = document.createElement('td');
+                    cell.textContent = rowData[key];
+                    row.appendChild(cell);
+                });
+
+                tableBody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>
+
