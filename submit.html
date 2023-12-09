@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Form</title>
+    <style>
+        body{
+            background-image: url('C:\Users\HP\Desktop\archive(2)\flasktemplate\OIP (2).jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            /* Additional styles for better readability */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Form</h1>
+    <form action="/predict" method="post">
+        <input type="text" name="Administrative" placeholder="Administrative">
+        <input type="text" name="Administrative_Duration" placeholder="Administrative Duration">
+        <input type="text" name="Informational " placeholder="Informational ">
+        <input type="text" name="Informational_Duration" placeholder="Informational Duration">
+        <input type="text" name="ProductRelated" placeholder="ProductRelated">
+        <input type="text" name="ProductRelated_Duration" placeholder="ProductRelated Duration">
+        <input type="text" name="BounceRates" placeholder="BounceRates">
+        <input type="text" name="ExitRates" placeholder="ExitRates">
+        <input type="text" name="PageValues" placeholder="PageValues">
+        <input type="text" name="SpecialDay" placeholder="SpecialDay">
+        <input type="text" name="Month" placeholder="Month">
+        <input type="text" name="OperatingSystems" placeholder="OperatingSystems">
+        <input type="text" name="Browser" placeholder="Browser">
+        <input type="text" name="Region" placeholder="Region">
+        <input type="text" name="TrafficType" placeholder="TrafficType">
+        <input type="text" name="VisitorType" placeholder="VisitorType">
+        <input type="text" name="Weekend" placeholder="Weekend">
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="prediction-result"></div>
+
+    <!-- JavaScript for handling prediction result display -->
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prediction-result').innerHTML = `Prediction: ${data.prediction}`;
+            });
+        });
+    </script>
+</body>
+</html>
+
